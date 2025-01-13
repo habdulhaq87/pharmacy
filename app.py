@@ -4,18 +4,20 @@ import pandas as pd
 # Set the page configuration
 st.set_page_config(page_title="Database App", layout="wide")
 
+# Initialize session state for navigation
+if "page" not in st.session_state:
+    st.session_state.page = "Home"  # Default page
+
 # Sidebar navigation with buttons
 st.sidebar.title("Navigation")
 if st.sidebar.button("Home", key="home_button"):
-    page = "Home"
-elif st.sidebar.button("Generate Graphs", key="generate_graphs_button"):
-    page = "Generate Graphs"
-elif st.sidebar.button("Add Row", key="add_row_button_sidebar"):
-    page = "Add Row"
-elif st.sidebar.button("About", key="about_button"):
-    page = "About"
-else:
-    page = "Home"  # Default page
+    st.session_state.page = "Home"
+if st.sidebar.button("Generate Graphs", key="generate_graphs_button"):
+    st.session_state.page = "Generate Graphs"
+if st.sidebar.button("Add Row", key="add_row_button_sidebar"):
+    st.session_state.page = "Add Row"
+if st.sidebar.button("About", key="about_button"):
+    st.session_state.page = "About"
 
 # Load the database.csv file
 @st.cache_data
@@ -27,8 +29,8 @@ def load_data():
         st.error("The file 'database.csv' was not found in the main directory.")
         return None
 
-# Home Page
-if page == "Home":
+# Page rendering logic
+if st.session_state.page == "Home":
     st.title("Database Visualization")
 
     # Load data
@@ -47,20 +49,17 @@ if page == "Home":
     else:
         st.warning("No data to display. Ensure 'database.csv' is in the main directory.")
 
-# Generate Graphs Page
-elif page == "Generate Graphs":
+elif st.session_state.page == "Generate Graphs":
     import generate  # Import the generate.py script
 
     generate.visualize_data()  # Call the function from generate.py
 
-# Add Row Page
-elif page == "Add Row":
+elif st.session_state.page == "Add Row":
     import add  # Import the add.py script
 
     add.add_new_row()  # Call the function from add.py
 
-# About Page
-elif page == "About":
+elif st.session_state.page == "About":
     st.title("About This App")
     st.write("""
         This application is designed to visualize data from a file named `database.csv` located in the main directory. 
