@@ -6,7 +6,7 @@ st.set_page_config(page_title="Database App", layout="wide")
 
 # Sidebar navigation
 st.sidebar.title("Navigation")
-page = st.sidebar.radio("Go to", ["Home", "Generate Graphs", "About"])
+page = st.sidebar.radio("Go to", ["Home", "Generate Graphs", "Add Row", "About"])
 
 # Load the database.csv file
 @st.cache_data
@@ -44,6 +44,12 @@ elif page == "Generate Graphs":
 
     generate.visualize_data()  # Call the function from generate.py
 
+# Add Row Page
+elif page == "Add Row":
+    import add  # Import the add.py script
+
+    add.add_new_row()  # Call the function from add.py
+
 # About Page
 elif page == "About":
     st.title("About This App")
@@ -54,12 +60,14 @@ elif page == "About":
         - **Raw Data View**: Explore the dataset in a tabular format.
         - **Data Summary**: View basic statistical summaries of the dataset.
         - **Interactive Charts**: Create scatter, line, or bar charts by selecting columns for the X and Y axes.
+        - **Add Rows**: Add new rows to the database using the Add Row page.
 
         ### How to Use:
         1. Place the `database.csv` file in the same directory as this application.
         2. Navigate to the **Home** page to explore data.
         3. Use the **Generate Graphs** page to create interactive visualizations.
-        4. Use the sidebar to switch between pages.
+        4. Use the **Add Row** page to insert new rows into the dataset.
+        5. Use the sidebar to switch between pages.
 
         For best results, ensure that the `database.csv` file is properly formatted with clear column headers.
     """)
