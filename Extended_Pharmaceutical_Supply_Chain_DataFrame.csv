@@ -1,0 +1,21 @@
+Stage,Location,Key Activities,Lead Time (Days),Regulatory Compliance
+Raw Material Supplier,China,"Supply raw materials (e.g., chemicals, compounds)",10,"GMP, ISO"
+Raw Material Supplier,Brazil,Supply herbal extracts for API production,12,"GMP, WHO"
+API Manufacturer,India,Synthesize Active Pharmaceutical Ingredients (APIs),15,"GMP, FDA"
+API Manufacturer,Switzerland,"Develop biotech-based APIs (e.g., insulin)",18,"EMEA, FDA"
+Formulation Manufacturer,Germany,"Manufacture dosage forms (e.g., tablets, capsules)",20,"FDA, EMEA"
+Formulation Manufacturer,Japan,"Develop specialized formulations (e.g., injectables)",22,"PMDA, FDA"
+Packaging Unit,United States,Package and label finished products,7,"FDA, EMEA"
+Packaging Unit,Canada,Package products for specific regions,8,"FDA, Health Canada"
+Distributor,United Kingdom,Store and transport products to pharmacies,5,"GDP, WHO"
+Distributor,Australia,Distribute products to rural areas,6,"GDP, WHO"
+Wholesaler,France,Wholesale distribution to retail outlets,3,"GDP, ISO"
+Wholesaler,Spain,Manage storage and distribution logistics,4,"GDP, EMEA"
+Logistics Provider,Netherlands,Provide transportation for finished goods,2,"GDP, ISO"
+Logistics Provider,Italy,Ensure cold chain logistics for sensitive products,3,"GDP, WHO"
+Pharmacy,Local Market,Sell medications to end consumers,1,Local Health Regulations
+Pharmacy,Regional Center,Provide OTC (Over-the-Counter) sales,1,Regional Health Guidelines
+Healthcare Provider,Hospital,Diagnose and prescribe medications,0,"FDA, Local Health"
+Healthcare Provider,Clinic,Provide follow-up care for treatments,0,"Local Health, WHO"
+Patient,Urban Area,Use prescribed medication as instructed,0,"Patient Rights, HIPAA"
+Patient,Rural Area,Request refills or report adverse effects,0,"Patient Rights, HIPAA"
