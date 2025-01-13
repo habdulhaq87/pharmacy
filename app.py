@@ -6,13 +6,13 @@ st.set_page_config(page_title="Database App", layout="wide")
 
 # Sidebar navigation with buttons
 st.sidebar.title("Navigation")
-if st.sidebar.button("Home"):
+if st.sidebar.button("Home", key="home_button"):
     page = "Home"
-elif st.sidebar.button("Generate Graphs"):
+elif st.sidebar.button("Generate Graphs", key="generate_graphs_button"):
     page = "Generate Graphs"
-elif st.sidebar.button("Add Row"):
+elif st.sidebar.button("Add Row", key="add_row_button_sidebar"):
     page = "Add Row"
-elif st.sidebar.button("About"):
+elif st.sidebar.button("About", key="about_button"):
     page = "About"
 else:
     page = "Home"  # Default page
