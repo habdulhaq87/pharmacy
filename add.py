@@ -39,8 +39,8 @@ def add_new_row():
         for column in data.columns:
             new_row[column] = st.text_input(f"Enter value for {column}:")
 
-        # Button to save new row
-        if st.button("Add Row"):
+        # Button to save new row (with unique key)
+        if st.button("Add Row", key="add_row_button"):
             add_row_to_database(new_row)
     else:
         st.warning("No data to display. Ensure 'database.csv' exists in the main directory.")
