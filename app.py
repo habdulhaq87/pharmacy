@@ -1,13 +1,12 @@
 import streamlit as st
 import pandas as pd
-import plotly.express as px
 
 # Set the page configuration
 st.set_page_config(page_title="Database App", layout="wide")
 
 # Sidebar navigation
 st.sidebar.title("Navigation")
-page = st.sidebar.radio("Go to", ["Home", "About"])
+page = st.sidebar.radio("Go to", ["Home", "Generate Graphs", "About"])
 
 # Load the database.csv file
 @st.cache_data
@@ -36,33 +35,14 @@ if page == "Home":
         st.subheader("Data Summary")
         st.write(data.describe())
 
-        # Select columns for visualization
-        st.subheader("Visualize Data")
-        columns = data.columns.tolist()
-
-        if columns:
-            x_axis = st.selectbox("Choose the X-axis:", options=columns)
-            y_axis = st.selectbox("Choose the Y-axis:", options=columns)
-            chart_type = st.radio(
-                "Select Chart Type:",
-                options=["Scatter", "Line", "Bar"]
-            )
-
-            if st.button("Generate Chart"):
-                # Create and display the chart
-                if chart_type == "Scatter":
-                    fig = px.scatter(data, x=x_axis, y=y_axis, title=f"{chart_type} Chart")
-                elif chart_type == "Line":
-                    fig = px.line(data, x=x_axis, y=y_axis, title=f"{chart_type} Chart")
-                elif chart_type == "Bar":
-                    fig = px.bar(data, x=x_axis, y=y_axis, title=f"{chart_type} Chart")
-
-                st.plotly_chart(fig, use_container_width=True)
-        else:
-            st.warning("The dataset has no columns to visualize.")
-
     else:
         st.warning("No data to display. Ensure 'database.csv' is in the main directory.")
+
+# Generate Graphs Page
+elif page == "Generate Graphs":
+    import generate  # Import the generate.py script
+
+    generate.visualize_data()  # Call the function from generate.py
 
 # About Page
 elif page == "About":
@@ -77,8 +57,9 @@ elif page == "About":
 
         ### How to Use:
         1. Place the `database.csv` file in the same directory as this application.
-        2. Navigate to the **Home** page to interact with the data.
-        3. Use the sidebar to switch between pages.
+        2. Navigate to the **Home** page to explore data.
+        3. Use the **Generate Graphs** page to create interactive visualizations.
+        4. Use the sidebar to switch between pages.
 
         For best results, ensure that the `database.csv` file is properly formatted with clear column headers.
     """)
