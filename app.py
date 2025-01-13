@@ -4,9 +4,18 @@ import pandas as pd
 # Set the page configuration
 st.set_page_config(page_title="Database App", layout="wide")
 
-# Sidebar navigation
+# Sidebar navigation with buttons
 st.sidebar.title("Navigation")
-page = st.sidebar.radio("Go to", ["Home", "Generate Graphs", "Add Row", "About"])
+if st.sidebar.button("Home"):
+    page = "Home"
+elif st.sidebar.button("Generate Graphs"):
+    page = "Generate Graphs"
+elif st.sidebar.button("Add Row"):
+    page = "Add Row"
+elif st.sidebar.button("About"):
+    page = "About"
+else:
+    page = "Home"  # Default page
 
 # Load the database.csv file
 @st.cache_data
